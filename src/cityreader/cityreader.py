@@ -31,12 +31,12 @@ cities = []
 
 
 def cityreader(cities=[]):
-    csv.quote_nonnumeric = True
+
     with open('cities.csv', newline='') as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',')
         for row in csvreader:
             if row[0] != 'city':
-                cities.append(City(row[0], row[3], row[4]))
+                cities.append(City(row[0], float(row[3]), float(row[4])))
 
     return cities
 
@@ -77,10 +77,10 @@ for c in cities:
 # Tucson: (32.1558,-110.8777)
 # Salt Lake City: (40.7774,-111.9301)
 
-lat1 = input("Enter corner 1 latitude:")
-lon1 = input("Enter corner 1 longitude:")
-lat2 = input("Enter corner 2 latitude:")
-lon2 = input("Enter corner 2 longitude:")
+# lat1 = input("Enter corner 1 latitude:")
+# lon1 = input("Enter corner 1 longitude:")
+# lat2 = input("Enter corner 2 latitude:")
+# lon2 = input("Enter corner 2 longitude:")
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # within will hold the cities that fall within the specified region
