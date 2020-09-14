@@ -31,7 +31,6 @@ cities = []
 
 
 def cityreader(cities=[]):
-
     with open('cities.csv', newline='') as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',')
         for row in csvreader:
@@ -77,18 +76,13 @@ for c in cities:
 # Tucson: (32.1558,-110.8777)
 # Salt Lake City: (40.7774,-111.9301)
 
-# lat1 = input("Enter corner 1 latitude:")
-# lon1 = input("Enter corner 1 longitude:")
-# lat2 = input("Enter corner 2 latitude:")
-# lon2 = input("Enter corner 2 longitude:")
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # within will hold the cities that fall within the specified region
     within = []
-    if lat1 > lat2:
-      lat1, lat2, lon1, lon2 = lat2, lat1, lon2, lon1
-
     # Go through each city and check to see if it falls within
     # the specified coordinates.
-
+    for city in cities:
+        if min([lat1, lat2]) < city.lat < max([lat1, lat2]) and min([lon1, lon2]) < city.lon < max([lon1, lon2]):
+            within.append(city)
     return within
